@@ -1,11 +1,11 @@
-import './App.css'
+import "./index.css"
 import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import Home from './pages/Home'
-import Signin from './pages/SignIn'
-import Signup from './pages/SignUp'
+import Signin from './pages/Signin'
+import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
-import { ThemeProvider } from './components/ui/theme-provider'
+import { ThemeProvider } from "@/components/ui/theme-provider"
 
 const router = createBrowserRouter([
   {

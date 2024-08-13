@@ -73,31 +73,31 @@ const LandingPage = () => {
         <img src="/src/assets/hero_bg_cropped.png" className="w-full h-auto object-cover" alt="hero.png" />
       </div>
       <div>
-        <p className="sm:text-5xl text-3xl mt-20 font-inter font-semibold text-center" >Featured Courses</p>
+        <p className="sm:text-6xl text-3xl mt-20 font-inter font-semibold text-center" >Featured Courses</p>
         <div>
-          <div className="grid grid-cols-3 gap-7 mx-36 mt-20  hidden lg:grid">
+          <div className="grid grid-cols-3 gap-10 mx-36 mt-20  hidden xl:grid">
             {
-              cardContents.map((card) => {
+              cardContents.map((card,index) => {
                 return (
-                  <MagicCard>
+                  <MagicCard key={index}>
                     <div className="p-10">
                       <img src="${card.imgUrl}" alt="img1" />
                       <p className="text-2xl font-semibold font-inter">{card.title}</p>
                       <p className="mt-2">{card.description}</p> 
-                      <Button variant={"neon"} className="ml-4 hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black mt-10 w-lg ">Get Started</Button>
+                      <Button variant={"neon"} className="ml-4 hover:xbg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black mt-10 w-lg ">Get Started</Button>
                     </div>
                   </MagicCard>
                 )
               })
             }
           </div>
-          <div className="lg:hidden mx-20 mt-10">
+          <div className="xl:hidden mx-20 mt-10">
             <Carousel>
               <CarouselContent>
                 {
-                  cardContents.map((card) => {
+                  cardContents.map((card,index) => {
                     return (
-                        <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                           <MagicCard>
                         <div className="p-10">
                           <img src="${card.imgUrl}" alt="img1" />
@@ -112,9 +112,47 @@ const LandingPage = () => {
                 }
               </CarouselContent>
               <CarouselPrevious />
-  <CarouselNext />
-
+              <CarouselNext />
             </Carousel>
+          </div>
+          <div>
+            <p className="sm:text-6xl text-3xl mt-20 font-inter font-semibold text-center">How it works</p>
+            <div className="flex justify-between items-center mx-36 mt-20">
+            <div className="flex flex-col items-center justify-center gap-4">
+            <div className="w-24 h-24 rounded-full border-white border-2 bg-dark-circle flex items-center justify-center">
+                <p className="text-2xl">1</p>
+            </div>
+            <p className="text-2xl font-semibold  font-inter text-center ">Browse Courses</p>
+            </div>
+
+
+            <div className="h-0.5 bg-white w-20 mb-12"></div>
+            
+            <div className="flex flex-col items-center justify-center gap-4">
+            <div className="w-24 h-24 rounded-full border-white border-2 bg-dark-circle flex items-center justify-center">
+                <p className="text-2xl">2</p>
+            </div>
+            <p className="text-2xl font-semibold font-inter text-center ">Enroll & Learn</p>
+            </div>
+            
+            <div className="h-0.5 bg-white w-20 mb-12"></div>
+            
+            <div className="flex flex-col items-center justify-center gap-4">
+            <div className="w-24 h-24 rounded-full border-white border-2 bg-dark-circle flex items-center justify-center">
+                <p className="text-2xl">3</p>
+            </div>
+            <p className="text-2xl font-semibold font-inter text-center ">Track Progress</p>
+            </div>
+            
+            <div className="h-0.5 bg-white w-20 mb-12"></div>
+            
+            <div className="flex flex-col items-center justify-center gap-4">
+            <div className="w-24 h-24 rounded-full border-white border-2 bg-dark-circle flex items-center justify-center">
+                <p className="text-2xl">4</p>
+            </div>
+            <p className="text-2xl font-semibold font-inter text-center ">Compete & Collaborate</p>
+            </div>
+            </div>
           </div>
         </div>
       </div>

@@ -62,7 +62,8 @@ module.exports = {
         'background-light': '#E1E1E1',
         'neon-button': '#76C7C0',
         'space-cadet':'2a324b',
-        'dark-new':'#121212'
+        'dark-new':'#121212',
+        'dark-circle':'#171C22'
       },
       backgroundImage: {
         // Custom radial gradient with points at top right and middle left

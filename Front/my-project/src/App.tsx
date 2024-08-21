@@ -1,43 +1,37 @@
-import "./index.css"
-import { createBrowserRouter,RouterProvider } from 'react-router-dom'
-import LandingPage from './pages/LandingPage'
-import Home from './pages/Home'
-import Signin from './pages/Signin'
-import Signup from './pages/Signup'
-import Dashboard from './pages/Dashboard'
-import { ThemeProvider } from "@/components/ui/theme-provider"
+import "./index.css";
+import {BrowserRouter as Router,Routes,Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import Home from "./pages/Home";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+import RoadMapPage from "./pages/RoadMapPage";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import ErrorBoundary from "./pages/ErrorBoundary"; 
+import ErrorPage from "./pages/ErrorPage"; 
+import RoadMaps from "./pages/RoadMaps";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <LandingPage/> ,
-  },
-  {
-    path:"/home",
-    element:<Home/>
-  },
-  {
-    path:"/signin",
-    element:<Signin/>
-  },
-  {
-    path:"/signup",
-    element:<Signup/>
-  },
-  {
-    path:"/dashboard",
-    element:<Dashboard/>
-  }
-])
 function App() {
- return (
-  <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme" >
-      <div className="App">
-      <RouterProvider router={router} />
-      </div>
-  </ThemeProvider>
-
- )
+  return (
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ErrorBoundary>
+      <Router>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/signin" element={<Signin />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/roadmaps" element={<RoadMaps />}/>
+              <Route path="/roadmaps/:roadMapName" element={<RoadMapPage />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </div>
+        </Router>
+      </ErrorBoundary>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;

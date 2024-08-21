@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -17,6 +17,20 @@ module.exports = {
       },
     },
     extend: {
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -24,8 +38,8 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         fontFamily: {
-          satoshi: ['Satoshi', 'sans-serif'],
-          inter: ['Inter', 'sans-serif'],
+          satoshi: ["Satoshi", "sans-serif"],
+          inter: ["Inter", "sans-serif"],
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -56,18 +70,20 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
         // Custom colors based on the provided palette
-        'primary-accent': '#4A90E2',
-        'secondary-accent': '#76C7C0',
-        'background-dark': '#121212',
-        'background-light': '#E1E1E1',
-        'neon-button': '#76C7C0',
-        'space-cadet':'2a324b',
-        'dark-new':'#121212',
-        'dark-circle':'#171C22'
+        "primary-accent": "#4A90E2",
+        "secondary-accent": "#76C7C0",
+        "background-dark": "#121212",
+        "background-light": "#E1E1E1",
+        "neon-button": "#76C7C0",
+        "space-cadet": "2a324b",
+        "dark-new": "#121212",
+        "dark-circle": "#171C22",
+        "dark-card": "#1C1C1C",
       },
       backgroundImage: {
         // Custom radial gradient with points at top right and middle left
-        'custom-radial': 'radial-gradient(circle at top right, #1e3a8a, #121212)',
+        "custom-radial":
+          "radial-gradient(circle at top right, #1e3a8a, #121212)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -91,4 +107,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

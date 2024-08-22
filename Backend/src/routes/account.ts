@@ -12,21 +12,18 @@ interface UserCompletionStatus {
 interface UserCompletionResource {
     userName: string;
     roadMapName: string;
-    resourceId: string;
-    sectionId: string;
-    topicId: string;
+    ques_topic: string;
 }
 
 interface UserSavedResource {
     userName: string;
     roadMapName: string;
-    resourceId: string;
-    sectionId: string;
-    topicId: string;
+    ques_topic: string;
 }
 
 interface UserSavedStatus {
     userName: string;
+    roadMapName: string;
 }
 
 accountRouter.get('/completion', async (req: Request, res: Response) => {
@@ -46,17 +43,24 @@ accountRouter.get('/completion', async (req: Request, res: Response) => {
                 msg: "Account not found",
             });
         }
-        const completedResources = account.completedResources.find((roadMap) => roadMap.roadMapName === roadMapName);
-        return res.json({ completedResources });
+        const resources = account.resources.find((roadMap) => roadMap.roadMapName === roadMapName);
+        const completedResources =  resources?.completedResources;
+        return res.json({
+            success:true, 
+            completed:completedResources
+         });
     } catch (err) {
         console.log(err);
-        return res.json({ msg: "Error loading data(completion)" });
+        return res.json({
+            success:false, 
+            msg: "Error loading data(completion)"
+         });
     }
 });
 
 accountRouter.get('/saved', async (req: Request, res: Response) => {
     try {
-        const { userName } = req.body as UserSavedStatus;
+        const { userName,roadMapName } = req.body as UserSavedStatus;
         const checkUser = await UserAccountId.findOne({ userName });
         if (!checkUser) {
             return res.json({
@@ -71,7 +75,8 @@ accountRouter.get('/saved', async (req: Request, res: Response) => {
                 msg: "Account not found",
             });
         }
-        const savedResources = account.savedResources;
+        const resources = account.resources.find((roadMap) => roadMap.roadMapName === roadMapName);
+        const savedResources = resources?.savedResources;
         return res.json({
             success: true,
             savedResources,
@@ -89,7 +94,7 @@ accountRouter.post('/completion', async (req: Request, res: Response) => {
     const session = await mongoose.startSession();
     try {
         session.startTransaction();
-        const { userName, roadMapName, resourceId, sectionId, topicId } = req.body as UserCompletionResource;
+        const { userName, roadMapName, ques_topic} = req.body as UserCompletionResource;
         const checkUser = await UserAccountId.findOne({ userName });
         if (!checkUser) {
             await session.abortTransaction();
@@ -105,12 +110,11 @@ accountRouter.post('/completion', async (req: Request, res: Response) => {
                 msg: "Account not found",
             });
         }
-        const checkCompletion = account.completedResources.find((roadMap) =>
-            roadMap.roadMapName === roadMapName &&
-            roadMap.resourceId === resourceId &&
-            roadMap.sectionId === sectionId &&
-            roadMap.topicId === topicId
+        const checkRoadmap = account.resources.find((roadMap) =>
+            roadMap.roadMapName === roadMapName
         );
+        const checkCompletion = checkRoadmap?.completedResources.find((resource) => resource.ques_topic === ques_topic);
+
         if (checkCompletion) {
             await session.abortTransaction();
             return res.json({
@@ -118,12 +122,35 @@ accountRouter.post('/completion', async (req: Request, res: Response) => {
                 msg: "Resource already completed",
             });
         }
-        account.completedResources.push({
-            roadMapName,
-            resourceId,
-            sectionId,
-            topicId,
-        });
+
+
+        if(checkRoadmap){
+            await Account.updateOne({userName:userName,
+                'resources.roadMapName':roadMapName}, {
+                $push : {
+                    'resources.$.completedResources': {
+                        roadMapName,
+                        ques_topic
+                    }
+                }
+            })
+        }
+        else {
+            await Account.updateOne( {userName:userName},{
+                $push: {
+                    resources: {
+                        roadMapName,
+                        completedResources: [
+                            {
+                                roadMapName,
+                                ques_topic
+                            }
+                        ],
+                        savedResources: []
+                    }
+                }
+            })
+        }
         await account.save({ session });
         await session.commitTransaction();
         return res.json({
@@ -146,7 +173,7 @@ accountRouter.post('/saved', async (req: Request, res: Response) => {
     const session = await mongoose.startSession();
     try {
         session.startTransaction();
-        const { userName, roadMapName, resourceId, sectionId, topicId } = req.body as UserSavedResource;
+        const { userName, roadMapName, ques_topic } = req.body as UserSavedResource;
         const checkUser = await UserAccountId.findOne({ userName });
         if (!checkUser) {
             await session.abortTransaction();
@@ -162,12 +189,11 @@ accountRouter.post('/saved', async (req: Request, res: Response) => {
                 msg: "Account not found",
             });
         }
-        const checkSaved = account.savedResources.find((roadMap) =>
-            roadMap.roadMapName === roadMapName &&
-            roadMap.resourceId === resourceId &&
-            roadMap.sectionId === sectionId &&
-            roadMap.topicId === topicId
+        const checkRoadmap = account.resources.find((roadMap) =>
+            roadMap.roadMapName === roadMapName
         );
+        const checkSaved = checkRoadmap?.completedResources.find((resource) => resource.ques_topic === ques_topic);
+
         if (checkSaved) {
             await session.abortTransaction();
             return res.json({
@@ -175,12 +201,35 @@ accountRouter.post('/saved', async (req: Request, res: Response) => {
                 msg: "Resource already saved",
             });
         }
-        account.savedResources.push({
-            roadMapName,
-            resourceId,
-            sectionId,
-            topicId,
-        });
+
+
+        if(checkRoadmap){
+            await Account.updateOne({userName:userName,
+                'resources.roadMapName':roadMapName}, {
+                $push : {
+                    'resources.$.savedResources': {
+                        roadMapName,
+                        ques_topic
+                    }
+                }
+            })
+        }
+        else {
+            await Account.updateOne( {userName:userName},{
+                $push: {
+                    resources: {
+                        roadMapName,
+                        savedResources: [
+                            {
+                                roadMapName,
+                                ques_topic
+                            }
+                        ],
+                        completedResources: []
+                    }
+                }
+            })
+        }
         await account.save({ session });
         await session.commitTransaction();
         return res.json({

@@ -11,15 +11,18 @@ roadMapRouter.get('/:roadMapName', async (req: Request, res: Response) => {
 
         if (!roadMap) {
             return res.status(404).json({
+                success:false,
                 msg: "Roadmap not found",
             });
         }
 
         return res.status(200).json({
-            roadMap: roadMap,
+            success:true,
+            roadMapContent: roadMap,
         });
     } catch (err) {
         return res.status(500).json({
+            success:false,
             error: err,
             msg: "Error loading roadmap",
         });

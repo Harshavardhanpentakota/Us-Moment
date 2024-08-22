@@ -11,55 +11,6 @@ else {
     console.error("Cannot get Db_url");
 }
 
-interface IuserAccountId {
-    userName: mongoose.Types.ObjectId,
-    email: mongoose.Types.ObjectId
-}
-
-interface IsavedResources {
-    roadMapName:String,
-    resourceId:String,
-    sectionId:String,
-    topicId:String
-}
-
-interface ICompletedResource {
-    roadMapName: string;
-    resourceId: string;
-    sectionId: string;
-    topicId: string;
-}
-
-interface IAccount extends Document {
-    userName: ObjectId;
-    firstName:string;
-    email:string;
-    savedResources: IsavedResources[];
-    completedResources:ICompletedResource[]
-}
-interface IUser extends Document {
-    email: string;
-    userName:string;
-    password: string;
-    firstName: string;
-    lastName: string;
-}
-
-interface IRoadmap extends Document {
-    title: string;
-    sections: {
-      title: string;
-      topics: {
-        title: string;
-        resources: {
-          title: string;
-          articleLink?: string;
-          youtubeLink?: string;
-          difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
-        }[];
-      }[];
-    }[];
-}
 
 const codingProfileSchema = new mongoose.Schema({
     title: {
@@ -77,6 +28,16 @@ const profileSchema = new mongoose.Schema({
     linkedIn:String,
     codingProfile:[codingProfileSchema],
 });
+
+interface IUser {
+    email: string;
+    userName:string;
+    phoneNumber: number;
+    password: string;
+    firstName: string;
+    lastName: string;
+    profile: typeof profileSchema
+}
 
 const userSchema = new mongoose.Schema({
     email:{
@@ -113,6 +74,11 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+interface IuserAccountId {
+    userName: string;
+    email: string;
+}
+
 
 const userAccountIdsSchema = new mongoose.Schema({
     userName: {
@@ -126,85 +92,107 @@ const userAccountIdsSchema = new mongoose.Schema({
     }
 });
 
+interface IResource {
+    roadMapName: string;
+    ques_topic: string; 
+}
+
+interface IRoadMapResources {
+    roadMapName: string;
+    savedResources: IResource[];
+    completedResources: IResource[];
+}
+
+interface IAccount extends Document {
+    userName: mongoose.Schema.Types.ObjectId;
+    firstName: string;
+    resources: IRoadMapResources[];
+}
+
+const resourceSchema = new mongoose.Schema<IResource>({
+    roadMapName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    ques_topic: {
+      type: String,
+      required: true, 
+    },
+});
+const roadMapResourcesSchema = new mongoose.Schema({
+    roadMapName: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    savedResources: [resourceSchema],
+    completedResources: [resourceSchema],
+});
+
 const accountSchema = new mongoose.Schema({
     userName: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-    },
-    firstName: {
-        type:String,
-        required:true
-    },
-    savedResources: [
-        {
-          roadMapName: {
-            type: String,
-            required: true,
-            trim: true,
-          },
-            resourseId: { type: String, required: true },
-            sectionId: { type: String, required: true },
-            topicId: { type: String, required: true },
-        },
-      ],    
-    completedResources: [
-        {
-          roadMapName: {
-            type: String,
-            required: true,
-            trim: true,
-          },
-          resourseId: {
-             type: String,
-             required: true 
-          },
-          sectionId: {
-            type: String,
-            required: true
-          },
-          topicId: {
-            type: String,
-            required: true
-          },
-        },
-      ],
+      },
+      firstName: {
+        type: String,
+        required: true,
+      },
+      resources: [roadMapResourcesSchema],
 })
 
-const resourceSchema = new mongoose.Schema({
-    id:{
-        type:String,
-        required:true
-    },
-    title: {type:String, 
-        required:true
-    },
-    articleLink:{
-        type:String,
-    },
-    videoLink:{
-        type:String,
-    },
-    difficulty: { type: String, 
-        enum: ['Easy', 'Medium', 'Hard'],
-        required: true 
-    },
-})
-const topicSchema = new mongoose.Schema({
+interface ITopic extends Document {
+    topicId: string;
+    step_no: number;
+    sl_no_in_step: number;
+    head_step_no: string;
+    title: string;
+    post_link: string;
+    yt_link: string;
+    cs_link: string;
+    gfg_link?: string;
+    lc_link: string;
+    company_tags?: string[] | null;
+    difficulty: number;
+    ques_topic: { value: string; label: string }[];
+  }
+  const TopicSchema = new mongoose.Schema<ITopic>({
+    topicId: { type: String, required: true },
+    step_no: { type: Number, required: true },
+    sl_no_in_step: { type: Number, required: true },
+    head_step_no: { type: String, required: true },
     title: { type: String, required: true },
-    resources: [resourceSchema],
-});
-
-const sectionSchema = new mongoose.Schema({
+    post_link: { type: String, required: true },
+    yt_link: { type: String, required: true },
+    cs_link: { type: String, required: true },
+    gfg_link: { type: String },
+    lc_link: { type: String, required: true },
+    company_tags: { type: [String], default: null },
+    difficulty: { type: Number, required: true },
+    ques_topic: [{ value: String, label: String }],
+  });
+  interface ISection extends Document {
+    step_no: number;
+    head_step_no: string;
+    topics: ITopic[];
+  }
+  const SectionSchema = new mongoose.Schema<ISection>({
+    step_no: { type: Number, required: true },
+    head_step_no: { type: String, required: true },
+    topics: { type: [TopicSchema], required: true },
+  });
+  interface IRoadmap extends Document {
+    title: string;
+    sections: ISection[];
+  }
+  const RoadmapSchema = new mongoose.Schema<IRoadmap>({
     title: { type: String, required: true },
-    topics: [topicSchema],
-});
+    sections: { type: [SectionSchema], required: true },
+  });
 
-const roadmapSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    sections: [sectionSchema],
-});
 
-export const Roadmap = model<IRoadmap>('Roadmap', roadmapSchema);
+export const Roadmap = model<IRoadmap>('Roadmap', RoadmapSchema);
 export const User = model<IUser>('User',userSchema);
 export const Account = model<IAccount>('Account',accountSchema);
 export const UserAccountId =  model<IuserAccountId>('UserAccountId',userAccountIdsSchema);

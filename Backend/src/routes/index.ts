@@ -1,13 +1,10 @@
 import {Route, Router} from "react-router-dom"
-import React from 'react'
 import express from "express"
-import courseRouter from "./courseRoute"
-import accountRouter from "./accountRoute"
+import { accountRouter } from "./account";
+import { roadMapRouter } from "./roadmap";
 
 const mainRouter = express.Router();
-mainRouter.use("/course", courseRouter);
 mainRouter.use("/account", accountRouter);
+mainRouter.use("/roadMap", roadMapRouter);
 
-export default mainRouter;
-
-
+export {mainRouter};

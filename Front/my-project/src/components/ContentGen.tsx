@@ -22,7 +22,7 @@ const ContentGen = ({ title }: { title: string }) => {
   }
 
   return (
-    <div className="m-12 mt-10">
+    <div className=" m-5 md:m-12 mt-10">
       <div>
         <p className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl my-2">{roadMapPreq?.header}</p>
         <p className="leading-7 [&:not(:first-child)]:mt-6">{roadMapPreq?.description}</p>

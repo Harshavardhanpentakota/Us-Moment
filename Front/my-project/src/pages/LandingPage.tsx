@@ -86,14 +86,14 @@ const LandingPage = () => {
         <div>
           <div className="mt-20 ml-10 w-2/3">
             <div>
-              <p className="text-4xl font-bold text-align-left ml-4 mt-4 font-inter sm:text-6xl sm:text-wrap">
+              <p className="text-3xl font-bold text-align-left ml-4 mt-4 font-inter sm:text-6xl sm:text-wrap">
                 Transform Your{" "}
                 <span className="text-sky-400">Computer Science </span>Career
                 with Expert Courses and Tools{" "}
               </p>
             </div>
             <div className="mt-10">
-              <p className="text-2xl font-light text-align-left ml-4 mt-4 font-satoshi sm:text-wrap">
+              <p className="text-xl font-light text-align-left ml-4 mt-4 font-satoshi sm:text-wrap">
                 {" "}
                 Discover curated learning paths, track your progress, and
                 achieve your career goals with ease

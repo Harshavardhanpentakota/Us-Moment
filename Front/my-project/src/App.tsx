@@ -16,7 +16,7 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <ErrorBoundary>
       <Router>
-          <div className="App">
+          <div className="App ">
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/home" element={<Home />} />

@@ -18,23 +18,24 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import ContentGen from "@/components/ContentGen";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useParams} from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 const RoadMapPage = () => {
   //fetch course credentials
   const { isSignedIn } = useAuth();
   const {roadMapName} = useParams();
   const checkRoadmap = roadmaps.roadMaps.find((roadmap:{title:string}) => roadmap.title === roadMapName);
-
+  const [sideBarView, setsideBarView] = useState(false);
   if (!checkRoadmap) {
     return <ErrorPage/>;
   }
 
   return (
     <div className="flex flex-row g-10 bg-dark-new">
-      <Sidebar pageName="roadmaps" />
+      <Sidebar pageName="roadmaps" toggleSideBar = {sideBarView} setToggleSideBar = {setsideBarView} />
       <div>
-        <div className="w-full flex flex-row-reverse p-5  items-center px-10 gap-6 border-b-2">
+        <div className="w-full flex  p-5 justify-between flex-row-reverse  px-10 gap-6 border-b-2">
           {isSignedIn ? (
             <div>
               <ClerkLoading>
@@ -87,6 +88,19 @@ const RoadMapPage = () => {
               </Button>
             </div>
           )}
+          {
+          !sideBarView && (
+            <div className="md:hidden flex justify-center items-center">
+        <button onClick={() => setsideBarView(!sideBarView)} >
+          <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 7H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M5 12H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M5 17H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          </button>
+        </div>
+          )
+        }
         </div>
         <ContentGen title={roadMapName?? ''} />
       </div>

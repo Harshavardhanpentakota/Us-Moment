@@ -38,7 +38,7 @@ const Content: React.FC<ContentProps> = ({ roadMapName, setProgress, setCompleti
   }
 
   return (
-    <div className="w-full h-full rounded-md border-neon-button border-2 my-5 p-8">
+    <div className="w-full h-full rounded-md border-neon-button border-2 my-5 p-2 md:p-8">
       {dsaMastery.dsaMastery.map((section, index) => {
         // Extract the topics from the current section
         const topics: Resource[] = section.topics.map((topic) => ({
@@ -48,11 +48,11 @@ const Content: React.FC<ContentProps> = ({ roadMapName, setProgress, setCompleti
           post_link: topic.post_link ?? "",
           yt_link: topic.yt_link ?? "",
           lc_link: topic.lc_link ?? "",
-          difficulty: topic.difficulty,
+          difficulty: topic.difficulty ?? 0,
         }));
 
         return (
-          <div key={index} className="my-5 border-neon-button border-2 font-satoshi rounded-md px-3 bg-neon-button bg-opacity-20">
+          <div key={index} className="my-5 border-neon-button overflow-hidden border-2 font-satoshi rounded-md px-3 bg-neon-button bg-opacity-20">
             <Accordion type="single" collapsible>
               <AccordionItem value={`item-${index}`}>
                 <AccordionTrigger className="text-xl text-medium">
@@ -62,8 +62,7 @@ const Content: React.FC<ContentProps> = ({ roadMapName, setProgress, setCompleti
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                  {/* Render the DataTable within AccordionContent */}
-                  <DataTable columns={columns} data={topics} />
+                 <DataTable columns={columns} data={topics}/>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

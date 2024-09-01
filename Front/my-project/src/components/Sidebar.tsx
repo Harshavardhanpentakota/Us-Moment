@@ -1,5 +1,4 @@
 import { Button } from "./ui/button";
-import { useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { useParams } from "react-router-dom";
@@ -7,8 +6,7 @@ import roadmaps from "@/assets/roadmaps.json";
 import ErrorPage from "@/pages/ErrorPage";
 import { useNavigate } from "react-router-dom";
 
-const Sidebar = ({pageName}:{pageName:string}) => {
-  const [sideBarView, setsideBarView] = useState(false);
+const Sidebar = ({pageName,toggleSideBar,setToggleSideBar}:{pageName:string,toggleSideBar:boolean,setToggleSideBar:(value:boolean)=>void}) => {
   const tags = ["DSA-Mastery", "Web-Development-Mastery", "App-Development-Mastery","Data-Science-Mastery","Machine-Learning-Mastery","AWS"];
   const {roadMapName}=useParams();
   const navigate=useNavigate();
@@ -32,8 +30,8 @@ const Sidebar = ({pageName}:{pageName:string}) => {
   }
 
   return (
-    <>
-     <div className="h-screen hidden md:block sticky top-0 bg-dark-new">
+    <div className="fixed md:relative">
+     <div className="h-screen sticky top-0 bg-dark-new hidden md:block">
       <nav className="  h-full flex flex-col border-r shadow-sm px-3">
         <div className="hidden sm:block m-5 p-4 pb-2 justify-between items-center">
           <button onClick={() => navigate("/")}><p className="text-3xl font-inter font-bold">UsMoment</p></button>
@@ -200,13 +198,20 @@ const Sidebar = ({pageName}:{pageName:string}) => {
       </nav>
     </div>
     {
-      sideBarView ? (
+      toggleSideBar && (
         <div className="h-screen sticky top-0 bg-dark-new md:hidden">
       <nav className="  h-full flex flex-col border-r shadow-sm px-3">
-        <div className="m-5 p-2 justify-between items-center">
-          <p className="text-3xl font-inter font-bold">UsMoment</p>
-        </div>
-        <div className="mt-2">
+      <div className="m-2 p-4 pb-2 flex items-center justify-between">
+          <button onClick={() => navigate("/")}><p className="text-3xl font-inter font-bold">UsMoment</p></button>
+          <button onClick={() => setToggleSideBar(!toggleSideBar)} >
+          <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 7H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M5 12H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M5 17H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          </button>
+      </div>
+      <div className="mt-10">
           <ul className="space-y-3 mx-2">
             <li>
               <Button
@@ -230,10 +235,30 @@ const Sidebar = ({pageName}:{pageName:string}) => {
             </li>
             <li>
               <Button
-                variant={ highLightElement === "roadMaps" ? "default" : "ghost"}
+               variant={ highLightElement === "roadmaps" ? "default" : "ghost"}
                 className="w-full gap-2 flex justify-start mx-3"
               >
-                <svg
+                {
+                  isRoadmap?(
+                    <>
+                     <svg
+                  width="20"
+                  height="22"
+                  viewBox="0 0 20 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18.0834 9.50002L19.2855 10.2213C19.5223 10.3634 19.599 10.6705 19.457 10.9073C19.4147 10.9777 19.3559 11.0366 19.2855 11.0788L10.0001 16.65L0.714629 11.0788C0.477839 10.9367 0.401059 10.6296 0.543129 10.3928C0.585359 10.3224 0.644249 10.2635 0.714629 10.2213L1.91672 9.50002L10.0001 14.35L18.0834 9.50002ZM18.0834 14.2L19.2855 14.9213C19.5223 15.0634 19.599 15.3705 19.457 15.6073C19.4147 15.6777 19.3559 15.7366 19.2855 15.7788L10.5145 21.0413C10.1979 21.2314 9.8022 21.2314 9.4856 21.0413L0.714629 15.7788C0.477839 15.6367 0.401059 15.3296 0.543129 15.0928C0.585359 15.0224 0.644249 14.9635 0.714629 14.9213L1.91672 14.2L10.0001 19.05L18.0834 14.2ZM10.5145 0.30876L19.2855 5.57132C19.5223 5.71339 19.599 6.02052 19.457 6.25731C19.4147 6.32769 19.3559 6.38659 19.2855 6.42881L10.0001 12L0.714629 6.42881C0.477839 6.28674 0.401059 5.97961 0.543129 5.74282C0.585359 5.67244 0.644249 5.61355 0.714629 5.57132L9.4856 0.30876C9.8022 0.11876 10.1979 0.11876 10.5145 0.30876Z"
+                    fill="#76C7C0"
+                  />
+                </svg>
+                <p className="text-neon-button">Roadmap</p>
+                    </>
+                  )
+                :(
+                  <>
+                  <svg
                   width="20"
                   height="22"
                   viewBox="0 0 20 22"
@@ -246,11 +271,36 @@ const Sidebar = ({pageName}:{pageName:string}) => {
                   />
                 </svg>
                 <p>RoadMaps</p>
+                  </>
+                )
+              }
               </Button>
+              <div>
+      <ScrollArea className="h-48 w-48 rounded-md mx-6 my-2">
+      <div className="p-1 ">
+        {tags.map((tag) => (
+          <>
+            {
+              tag.toLowerCase()===highLightElement?(
+                <Button key={tag} className="text-xs text-neon-button"variant="ghost" onClick={() => handleToggle(tag)}>
+              {tag}
+            </Button>
+              ):(
+                <Button key={tag} className="text-xs text-gray-600"variant="ghost" onClick={() => handleToggle(tag)}>
+              {tag}
+            </Button>
+              )
+            }
+            <Separator className="my-2" />
+          </>
+        ))}
+      </div>
+    </ScrollArea>
+              </div>
             </li>
             <li>
               <Button
-                variant={ highLightElement === "blogs" ? "default" : "ghost"}
+                variant={ highLightElement === "blogs" ? "outline" : "ghost"}
                 className="w-full gap-2 flex justify-start mx-3"
               >
                 <svg
@@ -294,13 +344,12 @@ const Sidebar = ({pageName}:{pageName:string}) => {
                     stroke-linecap="round"
                   />
                 </svg>
-
                 <p>Blogs</p>
               </Button>
             </li>
             <li>
               <Button
-                variant={ highLightElement === "saved" ? "default" : "ghost"}
+                variant={ highLightElement === "saved" ? "outline" : "ghost"}
                 className="w-full gap-2 flex justify-start mx-3"
               >
                 <svg
@@ -323,24 +372,9 @@ const Sidebar = ({pageName}:{pageName:string}) => {
         </div>
       </nav>
     </div>
-      ) : (
-        <div className="h-screen sticky top-0 bg-dark-new md:hidden">
-          <nav className="  h-full flex flex-col border-r shadow-sm px-3">
-          <div className="m-3 p-4 justify-between items-center">
-          <p className="text-3xl font-inter font-bold">UsMoment</p>
-        </div>
-          <button onClick={() => setsideBarView(true)} >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 7H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-            <path d="M5 12H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-            <path d="M5 17H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          </button>
-          </nav>
-        </div>
       )
     }
-    </>
+    </div>
   );
 };
 

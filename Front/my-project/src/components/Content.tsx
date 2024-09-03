@@ -21,6 +21,9 @@
   const Content: React.FC<ContentProps> = ({ roadMapName, setProgress, setCompletionCount, setTotalCount }) => {
     const [loading] = useState(false);
     const [error] = useState("");
+    setProgress(0);
+    setCompletionCount(0);
+    setTotalCount(0);
     const roadMapPreq = roadmaps.roadMaps.find(
       (roadmap: { title: string }) => roadmap.title === roadMapName
     );

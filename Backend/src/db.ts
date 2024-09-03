@@ -1,15 +1,8 @@
-import dotenv from 'dotenv';
 import mongoose, { ObjectId } from "mongoose";
 import {  model, Document } from 'mongoose';
+import connectDB from './conn';
 
-dotenv.config({path:'../.env'}); 
-
-if (process.env.DB_URL) {
-    mongoose.connect(process.env.DB_URL);
-} 
-else {
-    console.error("Cannot get Db_url");
-}
+connectDB();
 
 
 const codingProfileSchema = new mongoose.Schema({

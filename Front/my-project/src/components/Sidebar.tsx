@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 
 const Sidebar = ({pageName,toggleSideBar,setToggleSideBar}:{pageName:string,toggleSideBar:boolean,setToggleSideBar:(value:boolean)=>void}) => {
-  const tags = ["DSA-Mastery", "Web-Development-Mastery", "App-Development-Mastery","Data-Science-Mastery","Machine-Learning-Mastery","AWS"];
+  const tagContent = ["DSA Mastery", "Web Development Mastery", "App Development Mastery","Data Science Mastery","Machine Learning Mastery","AWS Mastery","System Design"];
+  const tags = ["dsa-mastery", "web-dev-mastery", "app-dev-mastery","data-science-mastery","machine-learning-mastery","aws-mastery","system-design-mastery"];
   const {roadMapName}=useParams();
   const navigate=useNavigate();
   let isRoadmap=false;
@@ -20,7 +21,8 @@ const Sidebar = ({pageName,toggleSideBar,setToggleSideBar}:{pageName:string,togg
         return <ErrorPage />;
     }
     else{
-      highLightElement=checkRoadmap.title;
+      const ind = roadmaps.roadMaps.findIndex((roadmap:{title:string}) => roadmap.title.toLowerCase() === roadMapName);
+      highLightElement=tagContent[ind];
       isRoadmap=true;
     }
   }
@@ -99,12 +101,12 @@ const Sidebar = ({pageName,toggleSideBar,setToggleSideBar}:{pageName:string,togg
               <div>
       <ScrollArea className="h-48 w-48 rounded-md mx-6 my-2">
       <div className="p-1 ">
-        {tags.map((tag) => (
+        {tags.map((tag,index) => (
           <>
             {
-              tag.toLowerCase()===highLightElement?(
+              tag===highLightElement?(
                 <Button key={tag} className="text-xs text-neon-button"variant="ghost" onClick={() => handleToggle(tag)}>
-              {tag}
+              {tagContent[index]}
             </Button>
               ):(
                 <Button key={tag} className="text-xs text-gray-600"variant="ghost" onClick={() => handleToggle(tag)}>

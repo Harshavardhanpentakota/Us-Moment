@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Progress } from "@/components/ui/progress";
 import Content from "./Content";
 const ContentGen = ({ title }: { title: string }) => {
-  const roadMapName = title.toLowerCase(); // Ensure case-insensitivity
+  const roadMapName = title.toLowerCase(); 
   const [progress, setProgress] = useState(0);
   const [totalCount, setTotalCount] = useState(0)
   const [completionCount, setCompletionCount] = useState(0)
@@ -32,10 +32,9 @@ const ContentGen = ({ title }: { title: string }) => {
               <AccordionTrigger className="text-xl text-medium">Key Highlights</AccordionTrigger>
               <AccordionContent>
                 <ul className="list-disc ml-5 leading-7 [&:not(:first-child)]:mt-6">
-                  <li>Teaches you problem solving by diving deep into DSA, with 450+ modules.</li>
-                  <li>In-depth video solutions covering brute, better, optimal solutions.</li>
-                  <li>Well-structured articles/notes for quick revision.</li>
-                  <li>Company tags associated with each problem.</li>
+                  {roadMapPreq?.keyHighlights.map((highlight, index) => (
+                    <li key={index}>{highlight.description}</li>
+                  ))}
                 </ul>
               </AccordionContent>
             </AccordionItem>

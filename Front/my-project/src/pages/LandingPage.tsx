@@ -37,7 +37,7 @@ const LandingPage = () => {
     {
       imgUrl: "../../mL.jpg",
       title: "Machine Learning Mastery",
-      searchCode:"ml-mastery",
+      searchCode:"machine-learning-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
@@ -56,9 +56,9 @@ const LandingPage = () => {
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
-      imgUrl: "",
-      title: "Data Science Mastery",
-      searchCode:"app-dev-mastery",
+      imgUrl: "../../system-design.png",
+      title: "System Design Mastery",
+      searchCode:"system-design-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },

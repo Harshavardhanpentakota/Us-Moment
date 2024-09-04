@@ -3,30 +3,129 @@
         "id": 1,
         "title": "dsa-mastery",
         "header": "Data Structures & Algorithms",
-        "description": "This course is made for people who want to learn DSA from A to Z for free in a well-organized and structured manner. The lecture quality is better than what you get in paid courses, the only thing we don’t provide is doubt support, but trust me our YouTube video comments resolve that as well, we have a wonderful community of 250K+ people who engage in all of the videos."
+        "description": "This course is made for people who want to learn DSA from A to Z for free in a well-organized and structured manner. The lecture quality is better than what you get in paid courses, the only thing we don’t provide is doubt support, but trust me our YouTube video comments resolve that as well, we have a wonderful community of 250K+ people who engage in all of the videos.",
+        "keyHighlights":[{
+            "id": 1,
+            "description":"Teaches you problem solving by diving deep into DSA, with 450+ modules."
+        },{
+            "id": 2,
+            "description":"In-depth video solutions covering brute, better, optimal solutions."
+        },{
+            "id": 3,
+            "description":"Well-structured articles/notes for quick revision."
+        },{
+            "id": 4,
+            "description":"Trusted community of 250K+ people who engage in all of the videos."
+        }]
     }, {
         "id": 2,
-        "title": "data-science-mastery",
-        "header": "Data Science Mastery",
-        "description": "This course is made for people who want to learn DSA from A to Z for free in a well-organized and structured manner. The lecture quality is better than what you get in paid courses, the only thing we don’t provide is doubt support, but trust me our YouTube video comments resolve that as well, we have a wonderful community of 250K+ people who engage in all of the videos."
-    
+        "title": "web-dev-mastery",
+        "header": "Web Development Mastery",
+        "description": "This course is made for people who want to learn DSA from A to Z for free in a well-organized and structured manner. The lecture quality is better than what you get in paid courses, the only thing we don’t provide is doubt support, but trust me our YouTube video comments resolve that as well, we have a wonderful community of 250K+ people who engage in all of the videos.",
+        "keyHighlights":[{
+            "id": 1,
+            "description":"Teaches you problem solving by diving deep into DSA, with 450+ modules."
+        },{
+            "id": 2,
+            "description":"In-depth video solutions covering brute, better, optimal solutions."
+        },{
+            "id": 3,
+            "description":"Well-structured articles/notes for quick revision."
+        },{
+            "id": 4,
+            "description":"Trusted community of 250K+ people who engage in all of the videos."
+        }]
     }, {
         "id": 3,
-        "title": "web-development-mastery",
-        "header": "Web Development Mastery",
-        "description": "This course is made for people who want to learn DSA from A to Z for free in a well-organized and structured manner. The lecture quality is better than what you get in paid courses, the only thing we don’t provide is doubt support, but trust me our YouTube video comments resolve that as well, we have a wonderful community of 250K+ people who engage in all of the videos."
-    
-    }, {
-        "id": 4,
         "title": "app-dev-mastery",
         "header": "App Development Mastery",
-        "description": "This course is made for people who want to learn DSA from A to Z for free in a well-organized and structured manner. The lecture quality is better than what you get in paid courses, the only thing we don’t provide is doubt support, but trust me our YouTube video comments resolve that as well, we have a wonderful community of 250K+ people who engage in all of the videos."
-    
+        "description": "This course is made for people who want to learn DSA from A to Z for free in a well-organized and structured manner. The lecture quality is better than what you get in paid courses, the only thing we don’t provide is doubt support, but trust me our YouTube video comments resolve that as well, we have a wonderful community of 250K+ people who engage in all of the videos.",
+        "keyHighlights":[{
+            "id": 1,
+            "description":"Teaches you problem solving by diving deep into DSA, with 450+ modules."
+        },{
+            "id": 2,
+            "description":"In-depth video solutions covering brute, better, optimal solutions."
+        },{
+            "id": 3,
+            "description":"Well-structured articles/notes for quick revision."
+        },{
+            "id": 4,
+            "description":"Trusted community of 250K+ people who engage in all of the videos."
+        }]
+    }, {
+        "id": 4,
+        "title": "data-science-mastery",
+        "header": "Data Science Mastery",
+        "description": "This course is made for people who want to learn DSA from A to Z for free in a well-organized and structured manner. The lecture quality is better than what you get in paid courses, the only thing we don’t provide is doubt support, but trust me our YouTube video comments resolve that as well, we have a wonderful community of 250K+ people who engage in all of the videos.",
+        "keyHighlights":[{
+            "id": 1,
+            "description":"Teaches you problem solving by diving deep into DSA, with 450+ modules."
+        },{
+            "id": 2,
+            "description":"In-depth video solutions covering brute, better, optimal solutions."
+        },{
+            "id": 3,
+            "description":"Well-structured articles/notes for quick revision."
+        },{
+            "id": 4,
+            "description":"Trusted community of 250K+ people who engage in all of the videos."
+        }]
     },{
         "id": 5,
-        "title": "cloud-mastery",
-        "header": "Cloud Computing Mastery",
-        "description": "This course is made for people who want to learn DSA from A to Z for free in a well-organized and structured manner. The lecture quality is better than what you get in paid courses, the only thing we don’t provide is doubt support, but trust me our YouTube video comments resolve that as well, we have a wonderful community of 250K+ people who engage in all of the videos."
-    
-    }]
+        "title": "machine-learning-mastery",
+        "header": "Machine Learning Mastery",
+        "description": "This course is made for people who want to learn DSA from A to Z for free in a well-organized and structured manner. The lecture quality is better than what you get in paid courses, the only thing we don’t provide is doubt support, but trust me our YouTube video comments resolve that as well, we have a wonderful community of 250K+ people who engage in all of the videos.",
+        "keyHighlights":[{
+            "id": 1,
+            "description":"Teaches you problem solving by diving deep into DSA, with 450+ modules."
+        },{
+            "id": 2,
+            "description":"In-depth video solutions covering brute, better, optimal solutions."
+        },{
+            "id": 3,
+            "description":"Well-structured articles/notes for quick revision."
+        },{
+            "id": 4,
+            "description":"Trusted community of 250K+ people who engage in all of the videos."
+        }]
+    }, {
+        "id": 6,
+        "title": "aws-mastery",
+        "header": "AWS Mastery",
+         "description": "This course is made for people who want to learn DSA from A to Z for free in a well-organized and structured manner. The lecture quality is better than what you get in paid courses, the only thing we don’t provide is doubt support, but trust me our YouTube video comments resolve that as well, we have a wonderful community of 250K+ people who engage in all of the videos.",
+         "keyHighlights":[{
+            "id": 1,
+            "description":"Teaches you problem solving by diving deep into DSA, with 450+ modules."
+        },{
+            "id": 2,
+            "description":"In-depth video solutions covering brute, better, optimal solutions."
+        },{
+            "id": 3,
+            "description":"Well-structured articles/notes for quick revision."
+        },{
+            "id": 4,
+            "description":"Trusted community of 250K+ people who engage in all of the videos."
+        }]
+    },
+    {
+        "id": 7,
+        "title": "system-design-mastery",
+        "header": "System Design Mastery",
+         "description": "This course is made for people who want to learn DSA from A to Z for free in a well-organized and structured manner. The lecture quality is better than what you get in paid courses, the only thing we don’t provide is doubt support, but trust me our YouTube video comments resolve that as well, we have a wonderful community of 250K+ people who engage in all of the videos.",
+         "keyHighlights":[{
+            "id": 1,
+            "description":"Teaches you problem solving by diving deep into DSA, with 450+ modules."
+        },{
+            "id": 2,
+            "description":"In-depth video solutions covering brute, better, optimal solutions."
+        },{
+            "id": 3,
+            "description":"Well-structured articles/notes for quick revision."
+        },{
+            "id": 4,
+            "description":"Trusted community of 250K+ people who engage in all of the videos."
+        }]
+    }
+]
 }

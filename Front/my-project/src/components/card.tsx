@@ -15,8 +15,9 @@ const Card = ({
   const navigate = useNavigate();
 
   return (
-    <div className=" dark:bg-dark-card dark:hover:border-white hover:border bg-slate-300 hover:border-black  flex flex-col items-center p-10 rounded-lg ">
-      <img src={imgUrl} alt="img1" />
+    <div className=" dark:bg-dark-card dark:hover:border-white hover:border bg-slate-300 hover:border-black  flex flex-col items-center rounded-lg ">
+      <img className="rounded-md" src={imgUrl} alt="img1" />
+      <div className="md:px-10 md:pb-10 md:pt-3 px-5 pb-5 pt-2">
       <p className="sm:text-2xl text-xl font-semibold font-inter">{title}</p>
       <p className="mt-2 sm:text-lg text-sm">{description}</p>
       <Button
@@ -26,6 +27,7 @@ const Card = ({
       >
         Get Started
       </Button>
+      </div>
     </div>
   );
 };

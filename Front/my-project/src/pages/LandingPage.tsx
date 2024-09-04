@@ -14,44 +14,44 @@ const LandingPage = () => {
   const myRef = useRef<HTMLElement | null>(null);
   const cardContents = [
     {
-      imgUrl: "",
-      title: "DSA-Mastery",
+      imgUrl: "../../dsa.jpeg",
+      title: "DSA Mastery",
       searchCode:"dsa-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
-      imgUrl: "",
-      title: "Data-Science-Mastery",
-      searchCode:"datascience-mastery",
-      description:
-        "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
-    },
-    {
-      imgUrl: "",
-      title: "Web-Development-Mastery",
+      imgUrl: "../../web.jpeg",
+      title: "Web Development Mastery",
       searchCode:"web-dev-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
-      imgUrl: "",
-      title: "App-Development-Mastery",
+      imgUrl: "../../mobile.jpg",
+      title: "App Development Mastery",
       searchCode:"app-dev-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
-      imgUrl: "",
-      title: "Data-Science-Mastery",
-      searchCode:"app-dev-mastery",
+      imgUrl: "../../mL.jpg",
+      title: "Machine Learning Mastery",
+      searchCode:"ml-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
-      imgUrl: "",
+      imgUrl: "../../dataScience.jpg",
       title: "Data Science Mastery",
       searchCode:"app-dev-mastery",
+      description:
+        "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
+    },
+    {
+      imgUrl: "../../aws.png",
+      title: "AWS Mastery",
+      searchCode:"aws-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
@@ -134,7 +134,7 @@ const LandingPage = () => {
                   );
                 })}
               </div>
-              <div ref={myRef as React.RefObject<HTMLDivElement>} className="xl:hidden mx-20 mt-10">
+              <div ref={myRef as React.RefObject<HTMLDivElement>} className="xl:hidden mx-12 mt-10">
                 <Carousel>
                   <CarouselContent>
                     {cardContents.map((card, index) => {

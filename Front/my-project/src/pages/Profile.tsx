@@ -1,10 +1,14 @@
 import Sidebar from "@/components/Sidebar";
-import UserProfileSkeleton from "@/components/ui/UserProfile/UserProfileSkeleton";
-import { useAuth } from "@clerk/clerk-react";
-import { ClerkLoading, ClerkLoaded, UserButton } from "@clerk/clerk-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import roadmaps from "@/assets/roadmaps.json";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,33 +20,33 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import ContentGen from "@/components/ContentGen";
-import { useState } from "react";
-import { useParams} from "react-router-dom";
+import { ClerkLoading, ClerkLoaded, UserButton } from "@clerk/clerk-react";
+import UserProfileSkeleton from "@/components/ui/UserProfile/UserProfileSkeleton";
 import ErrorPage from "./ErrorPage";
-const RoadMapPage = () => {
-  //fetch course credentials
-  const { isSignedIn } = useAuth();
-  const {roadMapName} = useParams();
-  const checkRoadmap = roadmaps.roadMaps.find((roadmap:{title:string}) => roadmap.title === roadMapName);
+const Profile = () => {
   const [sideBarView, setsideBarView] = useState(false);
-  const navigate = useNavigate();
-  if (!checkRoadmap) {
-    return <ErrorPage/>;
+  const {isSignedIn} = useAuth();
+  const {user}=useUser();
+  let checkUser = user?.username;
+  if(!checkUser || !isSignedIn){
+    return <ErrorPage/>
   }
-
+  function capitalize(str: string): string {
+    if (!str) return str;
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+  checkUser = capitalize(checkUser);
   return (
     <div className="flex flex-row gap-10 bg-dark-new">
-      <Sidebar pageName="roadmaps" toggleSideBar = {sideBarView} setToggleSideBar = {setsideBarView} />
+      <Sidebar pageName="profile" toggleSideBar = {sideBarView} setToggleSideBar = {setsideBarView}/>
       <div>
         <div className="w-full flex  p-5 justify-between flex-row-reverse  px-10 gap-6 border-b-2">
-          {isSignedIn ? (
             <div>
               <ClerkLoading>
                 <UserProfileSkeleton />
               </ClerkLoading>
               <ClerkLoaded>
-                <AlertDialog>
+                <AlertDialog> 
                   <AlertDialogTrigger asChild>
                     <UserButton
                       appearance={{
@@ -54,7 +58,7 @@ const RoadMapPage = () => {
                     />
                   </AlertDialogTrigger>
                   <AlertDialogContent>
-                    <AlertDialogHeader>
+                    <AlertDialogHeader> 
                       <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                       <AlertDialogDescription>
                         Do you really want to sign out?
@@ -72,24 +76,6 @@ const RoadMapPage = () => {
                 </AlertDialog>
               </ClerkLoaded>
             </div>
-          ) : (
-            <div className="flex gap-6">
-              <Button
-                variant={"neon"}
-                onClick={() => navigate("/signin") }
-                className=" hidden sm:block shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
-              >
-                Sign In
-              </Button>
-              <Button
-                variant={"neon"}
-                className="shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
-                onClick={() => navigate("/signup") }
-              >
-                Sign Up
-              </Button>
-            </div>
-          )}
           {
           !sideBarView && (
             <div className="md:hidden flex justify-center items-center">
@@ -104,10 +90,18 @@ const RoadMapPage = () => {
           )
         }
         </div>
-        <ContentGen title={roadMapName?? ''} />
+        <div className="p-10">
+        <div>
+        <p className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl my-2">Welcome, {checkUser}</p>
+        <p className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl my-2">{}</p>
+        <div className="my-5 border-neon-button border-2 font-satoshi rounded-md p-10 bg-neon-button bg-opacity-20">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi inventore accusantium consequuntur magni placeat eveniet in repudiandae dolorum! Nobis, repellat eos. Quis repudiandae hic quos! Provident explicabo veniam mollitia aspernatur soluta libero dolor, illum rerum odio quo autem neque non in qui doloremque reiciendis totam, nulla, laboriosam hic quos sequi? Ad quae illum placeat quia laboriosam facilis maxime? Deleniti adipisci earum soluta cupiditate asperiores incidunt neque a! Delectus in iure et, id, possimus cum enim libero culpa maiores fugiat distinctio dolorem deserunt reprehenderit ea sint laboriosam vitae! Asperiores earum, id unde, corporis itaque, nesciunt porro voluptatibus repudiandae quam dolorum rerum!</p>
+        </div>
+      </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default RoadMapPage;
+export default Profile;

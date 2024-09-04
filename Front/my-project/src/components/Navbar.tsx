@@ -1,4 +1,4 @@
-import { ModeToggle } from "./ui/mode-toggle";
+
 import { Button } from "./ui/button";
 import { useAuth } from "@clerk/clerk-react";
 import { SignOutButton} from "@clerk/clerk-react";
@@ -25,7 +25,6 @@ const Navbar = () => {
           </Button>
         ) : (
           <div className="flex gap-6">
-            <ModeToggle />
             <Button
               variant={"neon"}
               className=" hidden sm:block shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "

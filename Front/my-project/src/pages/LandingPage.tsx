@@ -201,7 +201,7 @@ const LandingPage = () => {
                       <p className="text-2xl">4</p>
                     </div>
                     <p className="text-2xl font-semibold font-inter text-center ">
-                      Compete & Collaborate
+                      Collab
                     </p>
                   </div>
                 </div>
@@ -209,7 +209,7 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer/>
       </div>
     </div>
   );

@@ -21,14 +21,16 @@ const Profile = () => {
   const {isSignedIn} = useAuth();
   const {user}=useUser();
   let checkUser = user?.username;
-  if(!checkUser || !isSignedIn){
-    return <ErrorPage/>
-  }
   function capitalize(str: string): string {
     if (!str) return str;
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
-  checkUser = capitalize(checkUser);
+  if(!isSignedIn){
+    return <ErrorPage/>
+  }
+  if(checkUser){
+    checkUser = capitalize(checkUser);
+  }
   return (
     <div className="flex flex-row gap-10 bg-dark-new">
       <Sidebar pageName="profile" toggleSideBar = {sideBarView} setToggleSideBar = {setsideBarView}/>

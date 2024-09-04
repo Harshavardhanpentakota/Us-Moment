@@ -111,7 +111,7 @@ const LandingPage = () => {
           </div>
           <div className="w-full">
             <img
-              src="/src/assets/hero_bg_cropped.png"
+              src="../../hero_bg_cropped.png"
               className="w-full h-auto object-cover"
               alt="hero.png"
             />

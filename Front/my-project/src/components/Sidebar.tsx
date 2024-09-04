@@ -5,64 +5,14 @@ import { useParams } from "react-router-dom";
 import roadmaps from "@/assets/roadmaps.json";
 import ErrorPage from "@/pages/ErrorPage";
 import { useNavigate } from "react-router-dom";
-import axios, { AxiosError } from 'axios';
 import { useAuth } from "@clerk/clerk-react";
-import {useState, useEffect } from "react";
-import Loading from "./Loading";
-
 
 const Sidebar = ({pageName,toggleSideBar,setToggleSideBar}:{pageName:string,toggleSideBar:boolean,setToggleSideBar:(value:boolean)=>void}) => {
   const tags = ["DSA-Mastery", "Web-Development-Mastery", "App-Development-Mastery","Data-Science-Mastery","Machine-Learning-Mastery","AWS"];
   const {roadMapName}=useParams();
   const navigate=useNavigate();
-  const [userName, setuserName] = useState("test");
-  interface ErrorResponse {
-    message: string;
-  }
-  const isAxiosError = (error: unknown): error is AxiosError => {
-    return (error as AxiosError).isAxiosError !== undefined;
-  };
-  const [error, setError] = useState<ErrorResponse | null>(null);
-  const [loading, setLoading] = useState(true)
-  interface AuthResult {
-    isSignedIn: boolean;
-    userId: string;
-  }
-  const {isSignedIn,userId}=useAuth() as AuthResult;
-  useEffect(() => {
-    const fetchUserName = async () => {
-      try{
-        if (isSignedIn && userId) {
-          const response = await axios.get(`https://usmoment.herokuapp.com/user/${userId}`);
-          const data = await response.data;
-          if(data){
-            setuserName(data.username);
-          }
-      }
-      else{
-        setLoading(false);
-      }
-      }
-      catch(err){
-        if (isAxiosError(err)) {
-          setError({ message: err.message });
-        } else {
-          setError({ message: 'An unknown error occurred' });
-        }
-        setLoading(false);
-      }
-      
-  }
-  fetchUserName();
-},[isSignedIn,userId]);
-  // if(error){
-  //   return <ErrorPage/>
-  // }
-  // if(loading){
-  //   return <Loading/>
-  // }
-  
   let isRoadmap=false;
+  const {isSignedIn} = useAuth();
   let highLightElement;
   if(roadMapName){
     const checkRoadmap = roadmaps.roadMaps.find((roadmap:{title:string}) => roadmap.title.toLowerCase() === roadMapName);
@@ -268,7 +218,7 @@ const Sidebar = ({pageName,toggleSideBar,setToggleSideBar}:{pageName:string,togg
                 variant={"ghost"}
                 className="w-full gap-2 flex justify-start mx-3"
                 onClick={() =>  {
-                  return isSignedIn ? navigate(`/profile/${userName}`) : navigate("/signup");
+                  return isSignedIn ? navigate("/profile") : navigate("/signup");
                 }}
               >
                 <svg

@@ -1,14 +1,7 @@
 import Sidebar from "@/components/Sidebar";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { useAuth } from "@clerk/clerk-react";
 import { useUser } from "@clerk/clerk-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import {
   AlertDialog,
   AlertDialogAction,

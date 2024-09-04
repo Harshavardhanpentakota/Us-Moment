@@ -121,7 +121,7 @@ const LandingPage = () => {
               Featured Courses
             </p>
             <div ref={myRef as React.RefObject<HTMLDivElement>}>
-              <div  className="grid grid-cols-3 gap-10 mx-36 mt-20  hidden xl:grid">
+              <div  className="grid-cols-3 gap-10 mx-36 mt-20  hidden xl:grid">
                 {cardContents.map((card, index) => {
                   return (
                     <Card

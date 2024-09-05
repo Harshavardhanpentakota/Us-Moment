@@ -16,63 +16,63 @@ const LandingPage = () => {
     {
       imgUrl: "../../dsa.jpeg",
       title: "DSA Mastery",
-      searchCode:"dsa-mastery",
+      searchCode: "dsa-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
       imgUrl: "../../web.jpeg",
       title: "Web Development Mastery",
-      searchCode:"web-dev-mastery",
+      searchCode: "web-dev-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
       imgUrl: "../../mobile.jpg",
       title: "App Development Mastery",
-      searchCode:"app-dev-mastery",
+      searchCode: "app-dev-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
       imgUrl: "../../mL.jpg",
       title: "Machine Learning Mastery",
-      searchCode:"machine-learning-mastery",
+      searchCode: "machine-learning-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
       imgUrl: "../../dataScience.jpg",
       title: "Data Science Mastery",
-      searchCode:"app-dev-mastery",
+      searchCode: "app-dev-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
       imgUrl: "../../aws.png",
       title: "AWS Mastery",
-      searchCode:"aws-mastery",
+      searchCode: "aws-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
       imgUrl: "../../system-design.png",
       title: "System Design Mastery",
-      searchCode:"system-design-mastery",
+      searchCode: "system-design-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
       imgUrl: "",
       title: "Data Science Mastery",
-      searchCode:"app-dev-mastery",
+      searchCode: "app-dev-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
     {
       imgUrl: "",
       title: "Data Science Mastery",
-      searchCode:"app-dev-mastery",
+      searchCode: "app-dev-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
     },
@@ -121,7 +121,7 @@ const LandingPage = () => {
               Featured Courses
             </p>
             <div ref={myRef as React.RefObject<HTMLDivElement>}>
-              <div  className="grid-cols-3 gap-10 mx-36 mt-20  hidden xl:grid">
+              <div className="grid-cols-3 gap-10 mx-36 mt-20  hidden xl:grid">
                 {cardContents.map((card, index) => {
                   return (
                     <Card
@@ -134,7 +134,10 @@ const LandingPage = () => {
                   );
                 })}
               </div>
-              <div ref={myRef as React.RefObject<HTMLDivElement>} className="xl:hidden mx-12 mt-10">
+              <div
+                ref={myRef as React.RefObject<HTMLDivElement>}
+                className="xl:hidden mx-12 mt-10"
+              >
                 <Carousel>
                   <CarouselContent>
                     {cardContents.map((card, index) => {
@@ -209,7 +212,7 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );

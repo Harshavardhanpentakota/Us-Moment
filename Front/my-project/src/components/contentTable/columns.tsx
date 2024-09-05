@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { ColumnDef } from "@tanstack/react-table"
-import { Checkbox } from "@/components/ui/checkbox"
+import { ColumnDef } from "@tanstack/react-table";
+import { Checkbox } from "@/components/ui/checkbox";
 
 // Define your Resource type here if not already defined
 export type Resource = {
-  topicId: string
-  status: "pending" | "processing" | "success" | "failed"
-  title: string
-  post_link: string
-  yt_link: string
-  lc_link: string | null
-  difficulty: number
-}
+  topicId: string;
+  status: "pending" | "processing" | "success" | "failed";
+  title: string;
+  post_link: string;
+  yt_link: string;
+  lc_link: string | null;
+  difficulty: number;
+};
 
 // Add the checkbox column to your columns array
 export const columns: ColumnDef<Resource>[] = [
@@ -24,14 +24,16 @@ export const columns: ColumnDef<Resource>[] = [
           table.getIsAllPageRowsSelected() ||
           (table.getIsSomePageRowsSelected() && "indeterminate")
         }
-        onCheckedChange={(value:boolean) => table.toggleAllPageRowsSelected(!!value)}
+        onCheckedChange={(value: boolean) =>
+          table.toggleAllPageRowsSelected(!!value)
+        }
         aria-label="Select all"
       />
     ),
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
-        onCheckedChange={(value:boolean) => row.toggleSelected(!!value)}
+        onCheckedChange={(value: boolean) => row.toggleSelected(!!value)}
         aria-label="Select row"
       />
     ),
@@ -50,7 +52,11 @@ export const columns: ColumnDef<Resource>[] = [
     accessorKey: "post_link",
     header: "Article",
     cell: ({ row }) => (
-      <a href={row.original.post_link} target="_blank" rel="noopener noreferrer">
+      <a
+        href={row.original.post_link}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Article
       </a>
     ),
@@ -68,7 +74,11 @@ export const columns: ColumnDef<Resource>[] = [
     accessorKey: "lc_link",
     header: "Practice",
     cell: ({ row }) => (
-      <a href={row.original.lc_link || "#"} target="_blank" rel="noopener noreferrer">
+      <a
+        href={row.original.lc_link || "#"}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {row.original.lc_link ? "Practice" : "N/A"}
       </a>
     ),
@@ -80,21 +90,16 @@ export const columns: ColumnDef<Resource>[] = [
       const difficulty = row.original.difficulty;
       let difficultyLabel = "Unknown";
 
-      if (difficulty === 0) 
-      {
+      if (difficulty === 0) {
         difficultyLabel = "Easy";
         return <span className="text-green-500">{difficultyLabel}</span>;
-      }
-      else if (difficulty === 1){
+      } else if (difficulty === 1) {
         difficultyLabel = "Medium";
         return <span className="text-yellow-500">{difficultyLabel}</span>;
-      } 
-      else{
+      } else {
         difficultyLabel = "Hard";
         return <span className="text-red-500">{difficultyLabel}</span>;
-      } 
-
-      
+      }
     },
   },
-]
+];

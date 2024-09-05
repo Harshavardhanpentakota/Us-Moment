@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { DataTable } from "./data-table"
-import { columns, Resource } from "./columns"
+import { DataTable } from "./data-table";
+import { columns, Resource } from "./columns";
 
 interface DemoPageProps {
-  data: Resource[]
+  data: Resource[];
 }
 
 export default function DemoPage({ data }: DemoPageProps) {
@@ -12,5 +12,5 @@ export default function DemoPage({ data }: DemoPageProps) {
     <div className="container mx-auto py-10">
       <DataTable columns={columns} data={data} />
     </div>
-  )
+  );
 }

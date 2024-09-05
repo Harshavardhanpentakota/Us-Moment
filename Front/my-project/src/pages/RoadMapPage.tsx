@@ -18,22 +18,28 @@ import {
 } from "@/components/ui/alert-dialog";
 import ContentGen from "@/components/ContentGen";
 import { useState } from "react";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 const RoadMapPage = () => {
   //fetch course credentials
   const { isSignedIn } = useAuth();
-  const {roadMapName} = useParams();
-  const checkRoadmap = roadmaps.roadMaps.find((roadmap:{title:string}) => roadmap.title === roadMapName);
+  const { roadMapName } = useParams();
+  const checkRoadmap = roadmaps.roadMaps.find(
+    (roadmap: { title: string }) => roadmap.title === roadMapName,
+  );
   const [sideBarView, setsideBarView] = useState(false);
   const navigate = useNavigate();
   if (!checkRoadmap) {
-    return <ErrorPage/>;
+    return <ErrorPage />;
   }
 
   return (
     <div className="flex flex-row gap-10 bg-dark-new">
-      <Sidebar pageName="roadmaps" toggleSideBar = {sideBarView} setToggleSideBar = {setsideBarView} />
+      <Sidebar
+        pageName="roadmaps"
+        toggleSideBar={sideBarView}
+        setToggleSideBar={setsideBarView}
+      />
       <div>
         <div className="w-full flex  p-5 justify-between flex-row-reverse  px-10 gap-6 border-b-2">
           {isSignedIn ? (
@@ -76,7 +82,7 @@ const RoadMapPage = () => {
             <div className="flex gap-6">
               <Button
                 variant={"neon"}
-                onClick={() => navigate("/signin") }
+                onClick={() => navigate("/signin")}
                 className=" hidden sm:block shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
               >
                 Sign In
@@ -84,27 +90,46 @@ const RoadMapPage = () => {
               <Button
                 variant={"neon"}
                 className="shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
-                onClick={() => navigate("/signup") }
+                onClick={() => navigate("/signup")}
               >
                 Sign Up
               </Button>
             </div>
           )}
-          {
-          !sideBarView && (
+          {!sideBarView && (
             <div className="md:hidden flex justify-center items-center">
-        <button onClick={() => setsideBarView(!sideBarView)} >
-          <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 7H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-            <path d="M5 12H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-            <path d="M5 17H19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          </button>
+              <button onClick={() => setsideBarView(!sideBarView)}>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 7H19"
+                    stroke="#FFFFFF"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M5 12H19"
+                    stroke="#FFFFFF"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M5 17H19"
+                    stroke="#FFFFFF"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
-          )
-        }
-        </div>
-        <ContentGen title={roadMapName?? ''} />
+        <ContentGen title={roadMapName ?? ""} />
       </div>
     </div>
   );

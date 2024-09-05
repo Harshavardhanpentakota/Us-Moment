@@ -1,6 +1,6 @@
 import { Button } from "./ui/button";
 import { useAuth } from "@clerk/clerk-react";
-import { SignOutButton} from "@clerk/clerk-react";
+import { SignOutButton } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const { isSignedIn } = useAuth();
@@ -11,7 +11,7 @@ const Navbar = () => {
         <span>
           <p className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
             <a href="/">UsMoment</a>
-          </p> 
+          </p>
         </span>
       </div>
       <div className="flex items-center gap-6 m-6">

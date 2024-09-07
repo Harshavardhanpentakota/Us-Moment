@@ -45,7 +45,7 @@ const Profile = () => {
         toggleSideBar={sideBarView}
         setToggleSideBar={setsideBarView}
       />
-      <div className="w-full">
+      <div className="w-full md:w-auto">
         <div className=" flex p-5 justify-between flex-row-reverse  px-10 gap-6 border-b-2">
           <div>
             <ClerkLoading>
@@ -115,28 +115,28 @@ const Profile = () => {
             </div>
           )}
         </div>
-        <div className="px-32 pr-36 py-10">
+        <div className="px-5 md:px-32 md:pr-36 py-10">
           <div>
-            <p className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl my-2">
+            <p className="scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl my-2">
               Welcome,
             </p>
-            <div className="my-5  border-neon-button border-2 font-satoshi rounded-md p-10 bg-neon-button bg-opacity-20">
+            <div className="my-5  border-neon-button border-2 font-satoshi rounded-md p-3 py-5 md:p-10 bg-neon-button bg-opacity-20">
               <div className="flex flex-col gap-10">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-10">
+                <div className="flex md:flex-row flex-col justify-between items-center">
+                  <div className="flex items-center gap-5 pb-5 md:pb-none">
                     <img
                       src={user?.imageUrl}
-                      className="h-28 w-28 rounded-full"
+                      className="h-12 w-12 sm:h-28 sm:w-28 rounded-full"
                       alt="User Dp"
                     />
                     <div>
-                      <p className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
+                      <p className="scroll-m-20 text-3xl font-bold sm:font-extrabold tracking-tight sm:text-4xl">
                         {checkUser}
                       </p>
                       <p>@usMoment</p>
                     </div>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="py-2 w-full md:w-auto px-4 md:py-none flex md:justify-end justify-between gap-2">
                     <Button className="bg-dark-new">
                       <div className="flex items-center">
                         <img
@@ -160,9 +160,9 @@ const Profile = () => {
                   </div>
                 </div>
                 <div>
-                  <ul className="flex justify-evenly">
+                  <ul className="flex justify-evenly flex-row">
                     <li>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center md:flex-row flex-col gap-2">
                         <div className="bg-neon-button rounded-lg p-2">
                           <img
                             src="../../mail.svg"
@@ -176,7 +176,7 @@ const Profile = () => {
                       </div>
                     </li>
                     <li>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 md:flex-row flex-col">
                         <div className="bg-neon-button rounded-lg p-2">
                           <img
                             src="../../mail.svg"
@@ -184,7 +184,7 @@ const Profile = () => {
                             className="h-5 w-5"
                           />
                         </div>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col justify-center items-center md:justify-start md:items-start ">
                           <p className="text-sm text-muted-foreground">
                             Location
                           </p>
@@ -195,7 +195,7 @@ const Profile = () => {
                       </div>
                     </li>
                     <li>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 md:flex-row flex-col">
                         <div className="bg-neon-button rounded-lg p-2">
                           <img
                             src="../../mail.svg"
@@ -217,14 +217,14 @@ const Profile = () => {
                 </div>
               </div>
               <div id="progress" className="p-2 py-5">
-                <div className="flex justify-between">
-                  <p className="scroll-m-20 pb-3 text-3xl font-semibold tracking-tight first:mt-0">
+                <div className="flex justify-between md:pb-none pb-3">
+                  <p className="scroll-m-20 pb-3 text-xl md:text-3xl font-semibold tracking-tight first:mt-0">
                     Progress
                   </p>
                   <Combobox />
                 </div>
-                <div className="rounded-lg grid grid-cols-4 bg-dark-new">
-                  <div className="total border-r-2 flex flex-col items-center justify-center px-4 py-6">
+                <div className="rounded-lg flex flex-row bg-dark-new overflow-x-auto md:overflow-none">
+                  <div className="total border-r-2 flex flex-col items-center justify-center px-4 py-6 ">
                     <div className="relative size-40 m-2">
                       <svg
                         className="size-full -rotate-90"
@@ -273,7 +273,7 @@ const Profile = () => {
                           stroke-linecap="round"
                         ></circle>
                       </svg>
-                      <div className="absolute text-center top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                      <div className=" absolute text-center top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
                         <span className="text-center text-2xl font-bold text-white">
                           Total
                         </span>
@@ -287,7 +287,7 @@ const Profile = () => {
                       Data Science
                     </div>
                   </div>
-                  <div className="easy p-6 flex items-center justify-center">
+                  <div className="easy p-6  flex items-center justify-center">
                     <div className="relative size-40">
                       <svg
                         className="size-full -rotate-90"
@@ -404,7 +404,7 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-7 gap-4 ">
+            <div className="flex flex-col md:grid md:grid-cols-7 gap-4 ">
               <div className="col-span-3   border-neon-button border-2 font-satoshi rounded-md p-7 bg-neon-button bg-opacity-20">
                 <p className="scroll-m-20 text-2xl font-semibold tracking-tight pb-4">
                   Expertise

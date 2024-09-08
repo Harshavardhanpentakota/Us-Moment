@@ -2,6 +2,7 @@ import { Button } from "./ui/button";
 import { useAuth } from "@clerk/clerk-react";
 import { SignOutButton } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
+import { SignUpButton } from "@clerk/clerk-react";
 const Navbar = () => {
   const { isSignedIn } = useAuth();
   const navigate = useNavigate();
@@ -34,9 +35,8 @@ const Navbar = () => {
             <Button
               variant={"neon"}
               className="shadow-md  hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
-              onClick={() => navigate("/signup")}
             >
-              {/* <SignUpButton /> */}
+              <SignUpButton />
               Signup
             </Button>
           </div>

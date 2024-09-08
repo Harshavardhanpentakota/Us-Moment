@@ -20,6 +20,7 @@ import ContentGen from "@/components/ContentGen";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
+import { SignUpButton } from "@clerk/clerk-react";
 const RoadMapPage = () => {
   //fetch course credentials
   const { isSignedIn } = useAuth();
@@ -90,9 +91,8 @@ const RoadMapPage = () => {
               <Button
                 variant={"neon"}
                 className="shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
-                onClick={() => navigate("/signup")}
               >
-                Sign Up
+                <SignUpButton/>
               </Button>
             </div>
           )}

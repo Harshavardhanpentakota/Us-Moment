@@ -68,7 +68,7 @@ const Sidebar = ({
         <nav className="  h-full flex flex-col border-r shadow-sm px-3">
           <div className="hidden sm:block m-5 p-4 pb-2 justify-between items-center">
             <button onClick={() => navigate("/")}>
-              <p className="text-3xl font-inter font-bold">UsMoment</p>
+              <p className="text-3xl font-inter font-bold">CodeArc.</p>
             </button>
           </div>
           <div className="mt-10">

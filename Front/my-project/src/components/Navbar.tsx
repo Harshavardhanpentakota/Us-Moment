@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="flex items-center gap-6">
         <span>
           <p className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
-            <a href="/">UsMoment</a>
+            <a href="/">CodeArc.</a>
           </p>
         </span>
       </div>

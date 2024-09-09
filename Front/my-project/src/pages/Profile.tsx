@@ -133,7 +133,7 @@ const Profile = () => {
                       <p className="scroll-m-20 text-3xl font-bold sm:font-extrabold tracking-tight sm:text-4xl">
                         {checkUser}
                       </p>
-                      <p>@usMoment</p>
+                      <p>@{user?.username}</p>
                     </div>
                   </div>
                   <div className="py-2 w-full md:w-auto px-4 md:py-none flex md:justify-end justify-between gap-2">

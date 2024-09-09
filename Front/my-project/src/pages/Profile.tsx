@@ -122,8 +122,8 @@ const Profile = () => {
             </p>
             <div className="my-5  border-neon-button border-2 font-satoshi rounded-md p-3 py-5 md:p-10 bg-neon-button bg-opacity-20">
               <div className="flex flex-col gap-10">
-                <div className="flex md:flex-row flex-col justify-between items-center">
-                  <div className="flex justify-between items-center gap-5 pb-5 md:pb-none">
+                <div className="flex md:flex-row flex-col justify-start items-start pt-2 sm:justify-between sm:items-center">
+                  <div className="flex justify-between items-center gap-5 pb-5 px-5 md:pb-none">
                     <img
                       src={user?.imageUrl}
                       className="h-14 w-14 sm:h-28 sm:w-28 rounded-full"

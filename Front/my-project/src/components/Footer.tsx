@@ -4,7 +4,7 @@ const Footer = () => {
       <div className=" md:grid md:grid-cols-12 flex flex-col gap-10">
         <div className="md:col-span-4 flex flex-col md:ml-20 mx-10">
           <p className="text-3xl font-inter font-bold md:text-left text-center items-center md:items-center">
-            UsMoment
+            CodeArc.
           </p>
           <p className="md:mt-10 mt-5 text-sm font-inter font-normal text-wrap text-center md:text-left">
             Discover awesome learning paths, track your epic progress, and smash

@@ -84,7 +84,7 @@ const LandingPage = () => {
       <div className="relative z-10">
         <Navbar />
         <div>
-          <div className="mt-20 ml-10 w-2/3">
+          <div className="mt-10 md:mt-20 ml-10 w-2/3">
             <div>
               <p className="text-3xl font-bold text-align-left ml-4 mt-4 font-inter sm:text-6xl sm:text-wrap">
                 Transform Your{" "}

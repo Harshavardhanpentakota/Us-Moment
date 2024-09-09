@@ -13,11 +13,11 @@ const Navbar = () => {
           </p>
         </span>
       </div>
-      <div className="flex items-center gap-6 m-6">
+      <div className="flex items-center gap-6 py-6 md:p-6">
         {isSignedIn ? (
           <Button
             variant={"neon"}
-            className="hidden sm:block shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
+            className="shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
           >
             <SignOutButton />
           </Button>

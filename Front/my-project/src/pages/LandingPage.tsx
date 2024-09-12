@@ -61,21 +61,7 @@ const LandingPage = () => {
       searchCode: "system-design-mastery",
       description:
         "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
-    },
-    {
-      imgUrl: "",
-      title: "Data Science Mastery",
-      searchCode: "app-dev-mastery",
-      description:
-        "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
-    },
-    {
-      imgUrl: "",
-      title: "Data Science Mastery",
-      searchCode: "app-dev-mastery",
-      description:
-        "Learn data analysis, machine learning, and statistical modeling using Python and R. Gain practical skills through hands-on projects and real datasets.",
-    },
+    }
   ];
 
   return (

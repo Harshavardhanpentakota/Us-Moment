@@ -63,9 +63,7 @@ export function DataTable<TData, TValue>({
                       >
                         {row.getVisibleCells().map((cell) => (
                           <TableCell key={cell.id}>
-                            {cell.getValue() == null
-                              ? "N/A"
-                              : flexRender(
+                            {flexRender(
                                   cell.column.columnDef.cell,
                                   cell.getContext(),
                                 )}

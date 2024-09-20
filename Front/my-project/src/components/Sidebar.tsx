@@ -63,7 +63,7 @@ const Sidebar = ({
   }
 
   return (
-    <div className="fixed md:relative">
+    <div className="fixed md:relative z-10">
       <div className="h-screen sticky top-0 bg-dark-new hidden md:block">
         <nav className="  h-full flex flex-col border-r shadow-sm px-3">
           <div className="hidden sm:block m-5 p-4 pb-2 justify-between items-center">

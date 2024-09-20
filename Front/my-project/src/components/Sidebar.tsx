@@ -243,7 +243,7 @@ const Sidebar = ({
           <nav className="  h-full flex flex-col border-r shadow-sm px-3">
             <div className="m-2 p-4 pb-2 flex items-center justify-between">
               <button onClick={() => navigate("/")}>
-                <p className="text-3xl font-inter font-bold">UsMoment</p>
+                <p className="text-3xl font-inter font-bold">CodeArc.</p>
               </button>
               <button onClick={() => setToggleSideBar(!toggleSideBar)}>
                 <svg

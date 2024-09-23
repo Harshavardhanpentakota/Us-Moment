@@ -12,6 +12,7 @@ import Saved from "./pages/Saved";
 import Blogs from "./pages/Blogs";
 import Profile from "./pages/Profile";
 import ShowProfile from "./pages/ShowProfile";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/signin" element={<Signin />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/profile" element={<Profile />} />

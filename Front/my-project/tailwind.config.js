@@ -79,6 +79,7 @@ module.exports = {
         "dark-new": "#121212",
         "dark-circle": "#171C22",
         "dark-card": "#1C1C1C",
+        "dark-light":"#333333"
       },
       backgroundImage: {
         // Custom radial gradient with points at top right and middle left

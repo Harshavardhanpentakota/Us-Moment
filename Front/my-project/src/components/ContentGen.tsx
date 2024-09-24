@@ -30,6 +30,7 @@ const ContentGen = ({ title }: { title: string }) => {
         <p className="leading-7 [&:not(:first-child)]:mt-6">
           {roadMapPreq?.description}
         </p>
+        <p className="text-lg font-semibold text-end px-4">Credits : <a href={roadMapPreq?.contributor_link}>{roadMapPreq?.contributor_name}</a> </p>
         <div className="my-5 border-neon-button border-2 font-satoshi rounded-md px-3 bg-neon-button bg-opacity-20">
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">

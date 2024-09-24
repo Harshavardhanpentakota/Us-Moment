@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 const Footer = () => {
+  const navigate=useNavigate();
   return (
     <div className=" mt-10 pt-20 bg-neon-button  ">
       <div className=" md:grid md:grid-cols-12 flex flex-col gap-10">
@@ -16,7 +18,7 @@ const Footer = () => {
           <div className="ml-10">
             <p className="text-md font-inter font-bold ">Company</p>
             <ul className="font-normal mt-5 mb-20">
-              <li className="mt-2">About</li>
+              <li className="mt-2"><button onClick={() => navigate("/privacy-policy")} >Privacy Policy</button></li>
               <li className="mt-2">Contact us</li>
               <li className="mt-2">Terms & Conditions</li>
               <li className="mt-2">Pricing</li>

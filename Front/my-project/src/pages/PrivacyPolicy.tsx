@@ -13,21 +13,21 @@ const PrivacyPolicy = () => {
                 <li>
                      Introduction
                     <ul className="list-disc px-5 text-lg font-normal">
-                    <li>Welcome to takeUforward. We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, and protect your data.</li>
+                    <li>Welcome to CodeArc. We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, and protect your data.</li>
                     </ul>    
                     </li>
                 <li>
                     Information We Collect:
                     <ul  className="list-disc px-5 text-lg font-normal">
-                    <li>When you register for an account, subscribe to our services, or contact us, we may collect personal information such as your name, email address, phone number, and payment details.</li>
+                    <li>When you register for an account, subscribe to our services, or contact us, we may collect personal information such as your name, email address, phone number.</li>
                     </ul>
                 </li>
                 <li>
                 How We Use Your Information:
                     <ul className="list-disc px-5 text-lg font-normal">
-                    <li>We use your personal information to create and manage your account, provide customer support, and process transactions.</li>
+                    <li>We use your personal information to create and manage your account, provide customer support.</li>
                     <li>Usage data helps us understand how our services are being used and allows us to make improvements.</li>
-                    <li>We may use your information to send newsletters, promotional materials, and other information that may be of interest to you. You can opt out of these communications at any time by following the unsubscribe link in the emails or by contacting us at hello@takeuforward.org.</li>
+                    <li>We may use your information to send newsletters, promotional materials, and other information that may be of interest to you. You can opt out of these communications at any time by following the unsubscribe link in the emails or by contacting us at harshavardhan.pentakota116@gmail.com.</li>
                     </ul>
                 </li>
                 <li>
@@ -39,7 +39,7 @@ const PrivacyPolicy = () => {
                 <li>
                 Your Rights
                     <ul className="list-disc px-5 text-lg font-normal">
-                        <li>You have the right to access and update your personal information. You can do this through your account settings or by contacting us at hello@takeuforward.org.</li>
+                        <li>You have the right to access and update your personal information. You can do this through your account settings or by contacting us at harshavardhan.pentakota116@gmail.com.</li>
                      <li>You have the right to request the deletion of your personal information. We will comply with your request, subject to certain exceptions prescribed by law.</li>
                     </ul>
                 </li>
@@ -55,7 +55,7 @@ const PrivacyPolicy = () => {
                 Contact Us
                 <ul className="list-disc px-5 text-lg font-normal">
                 <li>
-                If you have any questions or concerns about this Privacy Policy, please contact us at hello@takeuforward.org.
+                If you have any questions or concerns about this Privacy Policy, please contact us at harshavardhan.pentakoat116@gmail.com.
                 </li>
                 </ul>
                 </li>

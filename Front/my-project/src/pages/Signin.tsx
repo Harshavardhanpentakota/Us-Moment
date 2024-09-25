@@ -15,7 +15,7 @@ const Signin = () => {
         </div>
         <div className="col-span-2 bg-white flex flex-col justify-center items-center p-8 lg:col-span-1">
           <div className="flex justify-center items-center">
-            <SignIn />
+            <SignIn forceRedirectUrl={"/"} />
           </div>
         </div>
       </div>

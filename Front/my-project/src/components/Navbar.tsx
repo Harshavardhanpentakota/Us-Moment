@@ -1,9 +1,9 @@
 import { Button } from "./ui/button";
 import { SignOutButton, useAuth } from "@clerk/clerk-react";
-import Signin from "@/pages/Signin";
-import Signup from "@/pages/Signup";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const { isSignedIn } = useAuth();
+  const navigate= useNavigate();
   return (
     <div className="w-full flex justify-between items-center px-10 pt-2">
       <div className="flex items-center gap-6">
@@ -26,14 +26,16 @@ const Navbar = () => {
             <Button
               variant={"neon"}
               className=" hidden sm:block shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
+              onClick={() => navigate("/signin")}
             >
-              <Signin/>
+              SignIn
             </Button>
             <Button
               variant={"neon"}
               className="shadow-md  hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
+              onClick={() => navigate("/signup")}
             >
-              <Signup/>
+              SignUp
             </Button>
           </div>
         )}

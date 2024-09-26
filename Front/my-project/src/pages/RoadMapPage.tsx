@@ -16,8 +16,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import Signin from "./Signin";
-import Signup from "./Signup";
 import ContentGen from "@/components/ContentGen";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -87,13 +85,13 @@ const RoadMapPage = () => {
                 onClick={() => navigate("/signin")}
                 className=" hidden sm:block shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
               >
-                <Signin/>
+                <Button onClick={() => navigate("/signin")} >SignIn</Button>
               </Button>
               <Button
                 variant={"neon"}
                 className="shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
               >
-                <Signup/>
+                <Button onClick={() => navigate("/signup")}>SignUp</Button>
               </Button>
             </div>
           )}

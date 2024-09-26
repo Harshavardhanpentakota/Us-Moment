@@ -85,13 +85,14 @@ const RoadMapPage = () => {
                 onClick={() => navigate("/signin")}
                 className=" hidden sm:block shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
               >
-                <Button onClick={() => navigate("/signin")} >SignIn</Button>
+              SignIn
               </Button>
               <Button
                 variant={"neon"}
                 className="shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
+                onClick={() => navigate("/signup")}
               >
-                <Button onClick={() => navigate("/signup")}>SignUp</Button>
+              SignUp
               </Button>
             </div>
           )}

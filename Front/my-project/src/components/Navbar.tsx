@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
-import { SignInButton, useAuth } from "@clerk/clerk-react";
-import { SignOutButton } from "@clerk/clerk-react";
-import { SignUpButton } from "@clerk/clerk-react";
+import { SignOutButton, useAuth } from "@clerk/clerk-react";
+import Signin from "@/pages/Signin";
+import Signup from "@/pages/Signup";
 const Navbar = () => {
   const { isSignedIn } = useAuth();
   return (
@@ -27,13 +27,13 @@ const Navbar = () => {
               variant={"neon"}
               className=" hidden sm:block shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
             >
-              <SignInButton forceRedirectUrl={"/profile"}/>
+              <Signin/>
             </Button>
             <Button
               variant={"neon"}
               className="shadow-md  hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
             >
-              <SignUpButton forceRedirectUrl={"/profile"} />
+              <Signup/>
             </Button>
           </div>
         )}

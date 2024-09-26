@@ -16,12 +16,12 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { SignInButton } from "@clerk/clerk-react";
+import Signin from "./Signin";
+import Signup from "./Signup";
 import ContentGen from "@/components/ContentGen";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
-import { SignUpButton } from "@clerk/clerk-react";
 const RoadMapPage = () => {
   //fetch course credentials
   const { isSignedIn } = useAuth();
@@ -87,13 +87,13 @@ const RoadMapPage = () => {
                 onClick={() => navigate("/signin")}
                 className=" hidden sm:block shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
               >
-                <SignInButton/>
+                <Signin/>
               </Button>
               <Button
                 variant={"neon"}
                 className="shadow-md hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black text-black "
               >
-                <SignUpButton/>
+                <Signup/>
               </Button>
             </div>
           )}

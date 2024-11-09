@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import mongoose from "mongoose";
-import { User, UserAccountId } from "../db"; // Ensure these are correctly imported
+import { User, UserAccountId } from "../db"; 
 
 const userRouter = express.Router();
 

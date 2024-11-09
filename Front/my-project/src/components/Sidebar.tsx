@@ -160,7 +160,7 @@ const Sidebar = ({
               </li>
               <li>
                 <Button
-                  variant={highLightElement === "blogs" ? "outline" : "ghost"}
+                  variant={highLightElement === "blogs" ? "default" : "ghost"}
                   className="w-full gap-2 flex justify-start mx-3"
                   onClick={() => navigate("/blogs")}
                 >
@@ -210,7 +210,7 @@ const Sidebar = ({
               </li>
               <li>
                 <Button
-                  variant={highLightElement === "saved" ? "outline" : "ghost"}
+                  variant={"ghost"}
                   className="w-full gap-2 flex justify-start mx-3"
                   onClick={() => {
                     return isSignedIn
@@ -230,7 +230,11 @@ const Sidebar = ({
                       fill={`${highLightElement === "saved" ? "#76C7C0" : "#EAEAEA"}`}
                     />
                   </svg>
-                  <p>Saved</p>
+                  {highLightElement === "saved" ? (
+                    <p className="text-neon-button">Saved</p>
+                  ) : (
+                    <p>Saved</p>
+                  )}
                 </Button>
               </li>
             </ul>
@@ -363,7 +367,7 @@ const Sidebar = ({
                 </li>
                 <li>
                   <Button
-                    variant={highLightElement === "blogs" ? "outline" : "ghost"}
+                    variant={highLightElement === "blogs" ? "default" : "ghost"}
                     className="w-full gap-2 flex justify-start mx-3"
                     onClick={() => navigate("/blogs")}
                   >
@@ -413,7 +417,7 @@ const Sidebar = ({
                 </li>
                 <li>
                   <Button
-                    variant={highLightElement === "saved" ? "outline" : "ghost"}
+                    variant={ "ghost"}
                     className="w-full gap-2 flex justify-start mx-3"
                     onClick={() => {
                       return isSignedIn
@@ -433,7 +437,11 @@ const Sidebar = ({
                         fill={`${highLightElement === "saved" ? "#76C7C0" : "#EAEAEA"}`}
                       />
                     </svg>
+                    {highLightElement === "saved" ? (
+                    <p className="text-neon-button">Saved</p>
+                  ) : (
                     <p>Saved</p>
+                  )}
                   </Button>
                 </li>
               </ul>

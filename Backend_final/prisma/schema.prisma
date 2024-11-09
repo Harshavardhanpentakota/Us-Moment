@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  clerkId String @unique
+  email String @unique
+  userName String @unique
+  lists List[]
+  firstName String
+  lastName String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model List {
+  id           Int              @id @default(autoincrement())
+  name         String
+  userId       Int
+  user         User             @relation(fields: [userId], references: [id])
+  savedContents ListSavedContents[] @relation("ListSavedContentRelation") 
+  createdAt    DateTime         @default(now())
+  @@unique([name])
+}
+
+model SavedContent {
+  id           Int              @id @default(autoincrement())
+  title        String
+  url          String
+  description  String?
+  lists        ListSavedContents[] @relation("SavedContentListRelation") 
+  createdAt    DateTime         @default(now())
+}
+
+model ListSavedContents {
+  listId        Int
+  savedContentId Int
+  list          List           @relation(fields: [listId], references: [id], name: "ListSavedContentRelation")
+  savedContent  SavedContent    @relation(fields: [savedContentId], references: [id], name: "SavedContentListRelation")
+
+  @@id([listId, savedContentId]) 
+}
+

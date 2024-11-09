@@ -2,6 +2,17 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
+import { SavedCheckbox } from "./SavedCheckBox";
+// Helper function to validate URLs
+const isValidUrl = (url: string) => {
+  try {
+    new URL(url);
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
 
 // Define your Resource type here if not already defined
 export type Resource = {
@@ -12,7 +23,10 @@ export type Resource = {
   yt_link: string;
   lc_link: string | null;
   difficulty: number;
+  saved: boolean;
 };
+
+
 
 // Add the checkbox column to your columns array
 export const columns: ColumnDef<Resource>[] = [
@@ -29,8 +43,8 @@ export const columns: ColumnDef<Resource>[] = [
         }
         aria-label="Select all"
       />
-    ),
-    cell: ({ row }) => (
+    ),  
+     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
         onCheckedChange={(value: boolean) => row.toggleSelected(!!value)}
@@ -51,37 +65,49 @@ export const columns: ColumnDef<Resource>[] = [
   {
     accessorKey: "post_link",
     header: "Article",
-    cell: ({ row }) => (
-      <a
-        href={row.original.post_link}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Article
-      </a>
-    ),
+    cell: ({ row }) => {
+      const postLink = row.original.post_link;
+      return isValidUrl(postLink) ? (
+        <a
+          href={postLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 underline"
+        >
+           <img src="../../../article.svg" height={25} width={25} alt="Article" />
+        </a>
+      ) : (
+        <span>N/A</span>
+      );
+    },
   },
   {
     accessorKey: "yt_link",
     header: "Youtube",
-    cell: ({ row }) => (
-      <a href={row.original.yt_link} target="_blank" rel="noopener noreferrer">
-        Watch
-      </a>
-    ),
+    cell: ({ row }) => {
+      const ytLink = row.original.yt_link;
+      return isValidUrl(ytLink) ? (
+        <a href={ytLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+          <img src="../../../youtube_logo.svg" height={25} width={25} alt="Youtube" />
+        </a>
+      ) : (
+        <span>N/A</span>
+      );
+    },
   },
   {
     accessorKey: "lc_link",
     header: "Practice",
-    cell: ({ row }) => (
-      <a
-        href={row.original.lc_link || "#"}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {row.original.lc_link ? "Practice" : "N/A"}
-      </a>
-    ),
+    cell: ({ row }) => {
+      const lcLink = row.original.lc_link;
+      return isValidUrl(lcLink || "") ? (
+        <a href={lcLink || "#"} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+          <img src="../../../leetcode.svg" height={25} width={25} alt="Leetcode" />
+        </a>
+      ) : (
+        <span>N/A</span>
+      );
+    },
   },
   {
     accessorKey: "difficulty",
@@ -102,4 +128,11 @@ export const columns: ColumnDef<Resource>[] = [
       }
     },
   },
+  {
+    id: "saved", 
+    header: "Saved",
+    cell: ({ row }) => <SavedCheckbox row={row.original} />
+  },
 ];
+
+
